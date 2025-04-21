@@ -44,4 +44,35 @@ document.addEventListener("DOMContentLoaded", () => {
         // Initiales Bild anzeigen
         showImage(currentIndex);
     });
+
+    document.getElementById('kontaktForm').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Verhindert das Standard-Formularverhalten (Seitenreload)
+
+        const formData = new FormData(this); // Holt die Formulardaten
+        const data = Object.fromEntries(formData.entries()); // Konvertiert FormData in ein Objekt
+
+        try {
+            const response = await fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                // Zeige das Overlay bei Erfolg
+                const overlay = document.getElementById('successOverlay');
+                overlay.style.display = 'block';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 3000); // Blendet das Overlay nach 3 Sekunden aus
+            } else {
+                alert('Fehler beim Senden der E-Mail. Bitte versuchen Sie es erneut.');
+            }
+        } catch (error) {
+            console.error('Fehler:', error);
+            alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
+        }
+    });
 });

@@ -156,7 +156,7 @@
             <p data-aos="fade-up" data-aos-delay="100">Haben Sie Fragen oder wünschen Sie ein unverbindliches Angebot? Nutzen Sie das Formular oder rufen Sie uns an.</p>
             <div class="kontakt-wrapper">
                 <div class="kontakt-form" data-aos="fade-right" data-aos-delay="200">
-                    <form action="/send-email" method="POST">
+                    <form id="kontaktForm" action="/send-email" method="POST">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
@@ -175,6 +175,11 @@
                         </div>
                         <button type="submit" class="cta-button">Nachricht senden</button>
                     </form>
+
+                    <!-- Overlay für die Erfolgsmeldung -->
+                    <div id="successOverlay" style="display: none; position: fixed; top: 20px; right: 20px; background: #4caf50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+                        E-Mail erfolgreich gesendet!
+                    </div>
                 </div>
                 <div class="kontakt-info" data-aos="fade-left" data-aos-delay="300">
                     <h3>Direkter Kontakt</h3>

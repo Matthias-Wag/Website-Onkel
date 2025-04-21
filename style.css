@@ -3,8 +3,7 @@
     --primary-color: #2c3e50; /* Dunkles Blau/Grau */
     --secondary-color: #34495e; /* Etwas helleres Blau/Grau */
     --accent-color: #3498db; /* Ein helleres Blau für Akzente */
-    --blue: #49bfd4; /* Heller Hintergrund */
-    --light-gray: #ecf0f1; /* Helles Grau für Hintergründe */
+    --light-gray: #ecf0f1; /* Heller Hintergrund */
     --text-color: #333;
     --white-color: #ffffff;
     --heading-font: 'Source Sans 3', sans-serif;
@@ -20,13 +19,15 @@
 html {
     scroll-behavior: smooth; /* Ermöglicht sanftes Scrollen bei Klick auf Nav-Links */
     scroll-padding-top: 70px; /* Verhindert, dass der feste Header Inhalte verdeckt beim Anspringen */
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
 }
 
 body {
     font-family: var(--body-font);
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--blue); /* Heller Hintergrund */
+    background-color: var(--white-color);
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
 }
 
 .container {
@@ -125,6 +126,24 @@ header nav ul li a.active { /* Optional: Klasse für aktiven Link */
     transform: translateY(-2px); /* Leichter Anhebe-Effekt */
 }
 
+/* Standardmäßig Navigation anzeigen */
+header nav {
+    display: flex; /* Navigation bleibt sichtbar auf Computern */
+}
+
+/* Hamburger-Menü standardmäßig ausblenden */
+header .hamburger-menu {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+header .hamburger-menu {
+    color: #000; /* Setzt die Farbe des Icons auf Schwarz */
+}
 
 /* --- Hero Section --- */
 .hero {
@@ -341,7 +360,14 @@ footer a:hover {
     }
 
     header nav {
-        margin-top: 10px;
+        display: none; /* Navigation ausblenden */
+        flex-direction: column;
+        background-color: var(--white-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     header nav ul {
@@ -370,6 +396,14 @@ footer a:hover {
 
     .kontakt-info {
         margin-top: 20px; /* Abstand wenn untereinander */
+    }
+
+    header .hamburger-menu {
+        display: block; /* Hamburger-Menü anzeigen */
+    }
+
+    header nav.active {
+        display: flex; /* Navigation anzeigen, wenn aktiv */
     }
 }
 

@@ -22,7 +22,7 @@ app.post('/send-email', async (req, res) => {
         service: 'gmail', // Beispiel: Gmail
         auth: {
             user: 'plwebservice@gmail.com', // Deine E-Mail
-            pass: 'pqxgzcyoviiojhhw', // Dein Passwort (oder App-Passwort)
+            pass: "XuRi';pFNaLT8Y7", // Dein Passwort (oder App-Passwort)
         },
     });
 

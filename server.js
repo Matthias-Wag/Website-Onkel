@@ -26,8 +26,8 @@ app.post('/send-email', async (req, res) => {
             user: process.env.EMAIL_USER, // Deine E-Mail
             pass: process.env.EMAIL_PASS, // Dein Passwort (oder App-Passwort)
         },
-        debug: true, // Aktiviert Debugging
-        logger: true, // Protokolliert SMTP-Kommunikation
+       /* debug: true, // Aktiviert Debugging
+        logger: true, // Protokolliert SMTP-Kommunikation */
     });
 
     const mailOptions = {

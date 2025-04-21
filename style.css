@@ -1,0 +1,389 @@
+/* --- Globale Stile & Variablen --- */
+:root {
+    --primary-color: #2c3e50; /* Dunkles Blau/Grau */
+    --secondary-color: #34495e; /* Etwas helleres Blau/Grau */
+    --accent-color: #3498db; /* Ein helleres Blau für Akzente */
+    --light-gray: #ecf0f1; /* Heller Hintergrund */
+    --text-color: #333;
+    --white-color: #ffffff;
+    --heading-font: 'Source Sans 3', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Ermöglicht sanftes Scrollen bei Klick auf Nav-Links */
+    scroll-padding-top: 70px; /* Verhindert, dass der feste Header Inhalte verdeckt beim Anspringen */
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+h1 { font-size: 2.8rem; line-height: 1.2; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; }
+h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Verhindert ungewollte Abstände unter Bildern */
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.section-bg-light {
+    background-color: var(--light-gray);
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--white-color);
+    padding: 15px 0;
+    position: sticky; /* Fixiert den Header oben */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: var(--heading-font);
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 5px 0;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active { /* Optional: Klasse für aktiven Link */
+    color: var(--accent-color); /* Farbe beim Hover */
+    transform: translateY(-2px); /* Leichter Anhebe-Effekt */
+}
+
+
+/* --- Hero Section --- */
+.hero {
+    background-image: url('images/mauer.jpg'); /* Beispielhintergrundbild */
+    /* background-color: var(--primary-color); /* Kann auch ein Hintergrundbild sein */
+    /* background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('images/hero-bg.jpg') no-repeat center center/cover; */ /* Beispiel mit Overlay über Bild */
+    color: var(--white-color);
+    text-align: center;
+    padding: 100px 0;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    color: var(--white-color);
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Wichtig für Buttons */
+    cursor: pointer; /* Wichtig für Buttons */
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    transform: translateY(-2px); /* Leichter Anhebe-Effekt */
+}
+
+/* --- Leistungen --- */
+.leistungen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.leistung-item {
+    background-color: var(--white-color); /* Leicht vom hellgrauen Hintergrund abheben, falls section-bg-light verwendet wird */
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leistung-item:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.leistung-icon {
+    max-width: 60px; /* Größe für Icons anpassen */
+    margin: 0 auto 1rem auto; /* Icon zentrieren */
+    opacity: 0.7; /* Etwas dezenter */
+}
+
+.leistung-item h3 {
+    margin-bottom: 0.8rem;
+}
+
+.leistung-item ul {
+    text-align: left;
+    margin-top: 1rem;
+    padding-left: 20px; /* Einrückung für Listenelemente */
+    list-style: disc; /* Standard-Listenpunkte */
+}
+
+.leistung-item ul li {
+    margin-bottom: 0.5rem;
+    color: #555; /* Etwas helleres Grau für Details */
+}
+
+/* --- Projekte --- */
+.projekte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.projekt-item {
+    background-color: var(--white-color);
+    border-radius: 5px;
+    overflow: hidden; /* Stellt sicher, dass Bild im Rahmen bleibt */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projekt-item:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.projekt-item img {
+    width: 100%;
+    height: 200px; /* Feste Höhe für Bilder */
+    object-fit: cover; /* Stellt sicher, dass Bild den Bereich füllt, ohne sich zu verzerren */
+}
+
+.projekt-info {
+    padding: 20px;
+}
+
+.projekt-info h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Kontakt --- */
+.kontakt-wrapper {
+    display: flex;
+    gap: 40px;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Umbruch auf kleineren Bildschirmen */
+}
+
+.kontakt-form {
+    flex: 2; /* Formular nimmt mehr Platz ein */
+    min-width: 300px; /* Mindestbreite */
+}
+
+.kontakt-info {
+    flex: 1; /* Kontaktdaten nehmen weniger Platz ein */
+    min-width: 250px; /* Mindestbreite */
+    background-color: var(--light-gray);
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.kontakt-info h3 {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit; /* Schriftart übernehmen */
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical; /* Nur vertikales Ändern der Größe erlauben */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-gray);
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 40px; /* Abstand zum letzten Inhalt */
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+footer a {
+    color: var(--light-gray);
+    text-decoration: underline;
+}
+footer a:hover {
+    color: var(--white-color);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav {
+        margin-top: 10px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+        text-align: left;
+    }
+
+    header nav ul li a::after {
+        display: none; /* Hover-Effekt auf Mobile entfernen */
+    }
+
+    .hero {
+        padding: 60px 0;
+        height: auto; /* Höhe anpassen */
+        min-height: 50vh;
+    }
+
+    .kontakt-wrapper {
+        flex-direction: column;
+    }
+
+    .kontakt-info {
+        margin-top: 20px; /* Abstand wenn untereinander */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .leistungen-grid, .projekte-grid {
+        grid-template-columns: 1fr; /* Einspaltig auf sehr kleinen Geräten */
+    }
+}

@@ -79,7 +79,7 @@
             document.querySelectorAll('.projekt-gallery').forEach(gallery => {
                 let currentIndex = 0;
                 const images = gallery.querySelectorAll('img');
-                const updateGallery = () => images.forEach((img, i) => img.classList.toggle('active', i === currentIndex));
+                const updateGallery = () => images.forEach((img, i) => img.style.display = i === currentIndex ? 'block' : 'none');
                 gallery.parentElement.querySelector('.prev').addEventListener('click', () => {
                     currentIndex = (currentIndex - 1 + images.length) % images.length;
                     updateGallery();
@@ -92,53 +92,7 @@
             });
         });
     </script>
-    <style>
-        .projekt-gallery {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            height: 300px;
-        }
-
-        .projekt-gallery img {
-            max-width: 100%;
-            max-height: 100%;
-            display: none;
-            object-fit: cover;
-        }
-
-        .projekt-gallery img.active {
-            display: block;
-        }
-
-        .projekt-info {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 1.2em;
-        }
-
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="gallery.css">
     <section id="projekte" class="section-padding section-bg-light">
         <div class="container">
             <h2 data-aos="fade-up">Referenzprojekte</h2>

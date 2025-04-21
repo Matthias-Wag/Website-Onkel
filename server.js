@@ -27,7 +27,7 @@ app.post('/send-email', async (req, res) => {
     });
 
     const mailOptions = {
-        from: email,
+        from: 'plwebservice@gmail.com', // Absenderadresse
         to: 'philipp-kempf@gmx.de', // Zieladresse
         subject: `Kontaktformular: ${betreff || 'Kein Betreff'}`,
         text: `Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${nachricht}`,

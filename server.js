@@ -32,7 +32,7 @@ app.post('/send-email', async (req, res) => {
 
     const mailOptions = {
         from: 'plwebservice@gmail.com',
-        to: 'philipp-kempf@gmx.de',
+        to: 'p.lein@freenet.de',
         subject: `Kontaktformular: ${betreff || 'Kein Betreff'}`, // Standardwert für Betreff
         text: `Name: ${name || 'Unbekannt'}\nE-Mail: ${email || 'Keine E-Mail angegeben'}\n\nNachricht:\n${nachricht || 'Keine Nachricht angegeben'}`,
     };

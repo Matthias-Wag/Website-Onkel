@@ -177,8 +177,11 @@
                     </form>
 
                     <!-- Overlay für die Erfolgsmeldung -->
-                    <div id="successOverlay" style="display: none; position: fixed; top: 20px; right: 20px; background: #4caf50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-                        E-Mail erfolgreich gesendet!
+                    <div id="successOverlay" style="display: none; position: fixed; top: 20px; left: 20px; background: #4caf50; color: white; padding: 10px; border-radius: 5px; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+                        <p>E-Mail erfolgreich gesendet!</p>
+                        <div id="progressBar" style="width: 100%; height: 5px; background: #ffffff; margin-top: 10px; border-radius: 3px; overflow: hidden;">
+                            <div id="progress" style="width: 100%; height: 100%; background: #ff9800; transition: width 3s linear;"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="kontakt-info" data-aos="fade-left" data-aos-delay="300">
@@ -237,10 +240,22 @@
             if (response.ok) {
                 // Zeige das Overlay bei Erfolg
                 const overlay = document.getElementById('successOverlay');
+                const progress = document.getElementById('progress');
                 overlay.style.display = 'block';
+
+                // Setze den Fortschrittsbalken zurück und starte die Animation
+                progress.style.width = '100%';
+                setTimeout(() => {
+                    progress.style.width = '0%';
+                }, 10); // Verzögerung, um die Animation zu starten
+
+                // Scrolle an den Anfang der Seite
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Blende das Overlay nach 3 Sekunden aus
                 setTimeout(() => {
                     overlay.style.display = 'none';
-                }, 3000); // Blendet das Overlay nach 3 Sekunden aus
+                }, 3000);
             } else {
                 alert('Fehler beim Senden der E-Mail. Bitte versuchen Sie es erneut.');
             }

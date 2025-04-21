@@ -30,21 +30,35 @@ app.post('/send-email', async (req, res) => {
         logger: true, // Protokolliert SMTP-Kommunikation
     });
 
-    const mailOptions = {
+    // E-Mail an den Empfänger (z. B. dich)
+    const mailToRecipient = {
         from: 'plwebservice@gmail.com',
-        to: 'p.lein@freenet.de',
+        to: 'philipp-kempf@gmx.de', // Empfängeradresse
         subject: `Kontaktformular: ${betreff || 'Kein Betreff'}`, // Standardwert für Betreff
         text: `Name: ${name || 'Unbekannt'}\nE-Mail: ${email || 'Keine E-Mail angegeben'}\n\nNachricht:\n${nachricht || 'Keine Nachricht angegeben'}`,
     };
 
+    // Bestätigungs-E-Mail an den Absender
+    const mailToSender = {
+        from: 'plwebservice@gmail.com',
+        to: email, // Absenderadresse aus dem Formular
+        subject: 'Bestätigung: Ihre Nachricht ist eingegangen',
+        text: `Hallo ${name || 'Unbekannt'},\n\nvielen Dank für Ihre Nachricht. Wir haben Ihre Anfrage erhalten und werden uns so schnell wie möglich bei Ihnen melden.\n\nIhre Nachricht:\n${nachricht || 'Keine Nachricht angegeben'}\n\nMit freundlichen Grüßen,\nPL Bau`,
+    };
+
     try {
-        // Send the email
-        await transporter.sendMail(mailOptions);
-        console.log('E-Mail erfolgreich gesendet!');
-        res.status(200).send('E-Mail erfolgreich gesendet!'); // Antwort an den Client
+        // Sende die E-Mail an den Empfänger
+        await transporter.sendMail(mailToRecipient);
+        console.log('E-Mail an den Empfänger erfolgreich gesendet!');
+
+        // Sende die Bestätigungs-E-Mail an den Absender
+        await transporter.sendMail(mailToSender);
+        console.log('Bestätigungs-E-Mail an den Absender erfolgreich gesendet!');
+
+        res.status(200).send('E-Mails erfolgreich gesendet!'); // Antwort an den Client
     } catch (error) {
-        console.error('Fehler beim Senden der E-Mail:', error.message);
-        res.status(500).send(`Fehler beim Senden der E-Mail: ${error.message}`); // Fehlerantwort an den Client
+        console.error('Fehler beim Senden der E-Mails:', error.message);
+        res.status(500).send(`Fehler beim Senden der E-Mails: ${error.message}`); // Fehlerantwort an den Client
     }
 });
 

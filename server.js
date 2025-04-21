@@ -27,18 +27,18 @@ app.post('/send-email', async (req, res) => {
     });
 
     const mailOptions = {
-        from: 'plwebservice@gmail.com', // Absenderadresse
-        to: 'philipp-kempf@gmx.de', // Zieladresse
-        subject: `Kontaktformular: ${betreff || 'Kein Betreff'}`,
-        text: `Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${nachricht}`,
+        from: 'plwebservice@gmail.com',
+        to: 'philipp-kempf@gmx.de',
+        subject: `Kontaktformular: ${betreff || 'Kein Betreff'}`, // Standardwert für Betreff
+        text: `Name: ${name || 'Unbekannt'}\nE-Mail: ${email || 'Keine E-Mail angegeben'}\n\nNachricht:\n${nachricht || 'Keine Nachricht angegeben'}`,
     };
 
     try {
         await transporter.sendMail(mailOptions);
         res.status(200).send('E-Mail erfolgreich gesendet!');
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Fehler beim Senden der E-Mail.');
+        console.error('Fehler beim Senden der E-Mail:', error.message);
+        res.status(500).send(`Fehler beim Senden der E-Mail: ${error.message}`);
     }
 });
 

@@ -377,8 +377,20 @@ footer a:hover {
     }
 
     header nav ul li {
-        margin: 5px 0;
-        text-align: left;
+        margin: 0; /* Entfernt den Abstand zwischen den Buttons */
+    }
+
+    header nav ul li a {
+        display: block; /* Macht die Links blockförmig */
+        width: 100%; /* Nimmt die gesamte Breite des Bildschirms ein */
+        padding: 15px; /* Fügt etwas Innenabstand hinzu */
+        text-align: left; /* Zentriert den Text */
+        background-color: var(--white-color); /* Hintergrundfarbe */
+        border-bottom: 1px solid #ddd; /* Optional: Trennlinie zwischen den Buttons */
+    }
+
+    header nav ul li a:hover {
+        background-color: var(--light-gray); /* Hintergrundfarbe beim Hover */
     }
 
     header nav ul li a::after {
@@ -406,6 +418,10 @@ footer a:hover {
 
     header nav.active {
         display: flex; /* Navigation anzeigen, wenn aktiv */
+    }
+
+    header nav ul li {
+        margin-left: 20px; /* Abstand von links */
     }
 }
 

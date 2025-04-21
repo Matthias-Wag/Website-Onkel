@@ -14,4 +14,34 @@ document.addEventListener("DOMContentLoaded", () => {
             nav.classList.remove("active");
         });
     });
+
+    const projektItems = document.querySelectorAll(".projekt-item");
+
+    projektItems.forEach(item => {
+        const images = item.querySelectorAll(".projekt-gallery img");
+        const prevButton = item.querySelector(".prev");
+        const nextButton = item.querySelector(".next");
+        let currentIndex = 0;
+
+        // Funktion zum Anzeigen des aktuellen Bildes
+        const showImage = (index) => {
+            images.forEach((img, i) => {
+                img.classList.toggle("active", i === index);
+            });
+        };
+
+        // Event-Listener für die Pfeile
+        prevButton.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        // Initiales Bild anzeigen
+        showImage(currentIndex);
+    });
 });

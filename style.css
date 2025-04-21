@@ -270,6 +270,54 @@ header .hamburger-menu {
     margin-bottom: 0.5rem;
 }
 
+/* Galerie-Bilder */
+.projekt-gallery {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Passe die Höhe an */
+    overflow: hidden;
+}
+
+.projekt-gallery img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.projekt-gallery img.active {
+    opacity: 1; /* Nur das aktive Bild sichtbar machen */
+}
+
+/* Pfeile */
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 /* --- Kontakt --- */
 .kontakt-wrapper {
     display: flex;

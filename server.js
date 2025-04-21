@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const net = require('net');
 
 const app = express();
 const PORT = 3000;
@@ -25,6 +26,8 @@ app.post('/send-email', async (req, res) => {
             user: process.env.EMAIL_USER, // Deine E-Mail
             pass: process.env.EMAIL_PASS, // Dein Passwort (oder App-Passwort)
         },
+        debug: true, // Aktiviert Debugging
+        logger: true, // Protokolliert SMTP-Kommunikation
     });
 
     const mailOptions = {
@@ -42,6 +45,13 @@ app.post('/send-email', async (req, res) => {
         console.error('Fehler beim Senden der E-Mail:', error.message);
         res.status(500).send(`Fehler beim Senden der E-Mail: ${error.message}`);
     }
+});
+
+const client = net.createConnection({ host: 'smtp.gmail.com', port: 587 }, () => {
+    console.log('Verbindung zu Gmail SMTP erfolgreich!');
+});
+client.on('error', (err) => {
+    console.error('Fehler bei der Verbindung zu Gmail SMTP:', err.message);
 });
 
 app.listen(PORT, () => {

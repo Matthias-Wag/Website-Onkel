@@ -3,7 +3,8 @@
     --primary-color: #2c3e50; /* Dunkles Blau/Grau */
     --secondary-color: #34495e; /* Etwas helleres Blau/Grau */
     --accent-color: #3498db; /* Ein helleres Blau für Akzente */
-    --light-gray: #ecf0f1; /* Heller Hintergrund */
+    --blue: #49bfd4; /* Heller Hintergrund */
+    --light-gray: #ecf0f1; /* Helles Grau für Hintergründe */
     --text-color: #333;
     --white-color: #ffffff;
     --heading-font: 'Source Sans 3', sans-serif;
@@ -25,7 +26,7 @@ body {
     font-family: var(--body-font);
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--white-color);
+    background-color: var(--blue); /* Heller Hintergrund */
 }
 
 .container {

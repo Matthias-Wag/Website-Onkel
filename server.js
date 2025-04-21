@@ -37,22 +37,14 @@ app.post('/send-email', async (req, res) => {
         text: `Name: ${name || 'Unbekannt'}\nE-Mail: ${email || 'Keine E-Mail angegeben'}\n\nNachricht:\n${nachricht || 'Keine Nachricht angegeben'}`,
     };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        console.log('E-Mail erfolgreich gesendet!');
-        res.status(200).send('E-Mail erfolgreich gesendet!');
-    } catch (error) {
-        console.error('Fehler beim Senden der E-Mail:', error.message);
-        res.status(500).send(`Fehler beim Senden der E-Mail: ${error.message}`);
-    }
 });
 
-const client = net.createConnection({ host: 'smtp.gmail.com', port: 587 }, () => {
+/*const client = net.createConnection({ host: 'smtp.gmail.com', port: 587 }, () => {
     console.log('Verbindung zu Gmail SMTP erfolgreich!');
 });
 client.on('error', (err) => {
     console.error('Fehler bei der Verbindung zu Gmail SMTP:', err.message);
-});
+});*/
 
 app.listen(PORT, () => {
     console.log(`Server läuft auf http://localhost:${PORT}`);

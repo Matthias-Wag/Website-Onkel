@@ -355,8 +355,9 @@ footer a:hover {
     h2 { font-size: 1.8rem; }
 
     header .container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row; /* Logo und Hamburger-Icon in einer Zeile */
+        justify-content: space-between; /* Platz zwischen Logo und Icon */
+        align-items: center; /* Vertikale Ausrichtung */
     }
 
     header nav {
@@ -400,6 +401,7 @@ footer a:hover {
 
     header .hamburger-menu {
         display: block; /* Hamburger-Menü anzeigen */
+        margin-left: auto; /* Abstand zwischen Logo und Icon */
     }
 
     header nav.active {

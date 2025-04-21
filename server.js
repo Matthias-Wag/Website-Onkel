@@ -1,4 +1,5 @@
-// filepath: /Users/philippkempf/Desktop/Websites/Paul-Lein/Website-Onkel/server.js
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -21,8 +22,8 @@ app.post('/send-email', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail', // Beispiel: Gmail
         auth: {
-            user: 'plwebservice@gmail.com', // Deine E-Mail
-            pass: "XuRi';pFNaLT8Y7", // Dein Passwort (oder App-Passwort)
+            user: process.env.EMAIL_USER, // Deine E-Mail
+            pass: process.env.EMAIL_PASS, // Dein Passwort (oder App-Passwort)
         },
     });
 
@@ -35,6 +36,7 @@ app.post('/send-email', async (req, res) => {
 
     try {
         await transporter.sendMail(mailOptions);
+        console.log('E-Mail erfolgreich gesendet!');
         res.status(200).send('E-Mail erfolgreich gesendet!');
     } catch (error) {
         console.error('Fehler beim Senden der E-Mail:', error.message);

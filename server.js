@@ -26,8 +26,8 @@ app.post('/send-email', async (req, res) => {
             user: process.env.EMAIL_USER, // Deine E-Mail
             pass: process.env.EMAIL_PASS, // Dein Passwort (oder App-Passwort)
         },
-       /* debug: true, // Aktiviert Debugging
-        logger: true, // Protokolliert SMTP-Kommunikation */
+        debug: true, // Aktiviert Debugging
+        logger: true, // Protokolliert SMTP-Kommunikation
     });
 
     const mailOptions = {
@@ -37,6 +37,15 @@ app.post('/send-email', async (req, res) => {
         text: `Name: ${name || 'Unbekannt'}\nE-Mail: ${email || 'Keine E-Mail angegeben'}\n\nNachricht:\n${nachricht || 'Keine Nachricht angegeben'}`,
     };
 
+    try {
+        // Send the email
+        await transporter.sendMail(mailOptions);
+        console.log('E-Mail erfolgreich gesendet!');
+        res.status(200).send('E-Mail erfolgreich gesendet!'); // Antwort an den Client
+    } catch (error) {
+        console.error('Fehler beim Senden der E-Mail:', error.message);
+        res.status(500).send(`Fehler beim Senden der E-Mail: ${error.message}`); // Fehlerantwort an den Client
+    }
 });
 
 /*const client = net.createConnection({ host: 'smtp.gmail.com', port: 587 }, () => {

@@ -36,6 +36,10 @@ app.post('/send-email', async (req, res) => {
         to: 'philipp-kempf@gmx.de', // Empfängeradresse
         subject: `Kontaktformular: ${betreff || 'Kein Betreff'}`, // Standardwert für Betreff
         text: `Name: ${name || 'Unbekannt'}\nE-Mail: ${email || 'Keine E-Mail angegeben'}\n\nNachricht:\n${nachricht || 'Keine Nachricht angegeben'}`,
+        html: `<p><strong>Name:</strong> ${name || 'Unbekannt'}</p>
+               <p><strong>E-Mail:</strong> ${email || 'Keine E-Mail angegeben'}</p>
+               <p><strong>Nachricht:</strong></p>
+               <p>${nachricht || 'Keine Nachricht angegeben'}</p>`,
     };
 
     // Bestätigungs-E-Mail an den Absender

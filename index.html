@@ -260,6 +260,8 @@
             } else {
                 alert('Fehler beim Senden der E-Mail. Bitte versuchen Sie es erneut.');
             }
+            // Lösche den eingetragenen Text aus den Feldern
+            this.reset();
         } catch (error) {
             console.error('Fehler:', error);
             alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');

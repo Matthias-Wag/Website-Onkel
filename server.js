@@ -32,7 +32,7 @@ app.post('/send-email', async (req, res) => {
 
     // E-Mail an den Empfänger (z. B. dich)
     const mailToRecipient = {
-        from: 'Sender Name <plwebservice@gmail.com>',
+        from: process.env.EMAIL_USER,
         to: 'philipp-kempf@gmx.de', // Empfängeradresse
         subject: `Kontaktformular: ${betreff || 'Kein Betreff'}`, // Standardwert für Betreff
         text: `Name: ${name || 'Unbekannt'}\nE-Mail: ${email || 'Keine E-Mail angegeben'}\n\nNachricht:\n${nachricht || 'Keine Nachricht angegeben'}`,
@@ -40,7 +40,7 @@ app.post('/send-email', async (req, res) => {
 
     // Bestätigungs-E-Mail an den Absender
     const mailToSender = {
-        from: 'Sender Name <plwebservice@gmail.com>',
+        from: process.env.EMAIL_USER,
         to: email, // Absenderadresse aus dem Formular
         subject: 'Bestätigung: Ihre Nachricht ist eingegangen',
         text: `Hallo ${name || 'Unbekannt'},\n\nvielen Dank für Ihre Nachricht. Wir haben Ihre Anfrage erhalten und werden uns so schnell wie möglich bei Ihnen melden.\n\nIhre Nachricht:\n${nachricht || 'Keine Nachricht angegeben'}\n\nMit freundlichen Grüßen,\nPL Bau`,

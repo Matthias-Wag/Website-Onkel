@@ -130,8 +130,8 @@
                         <img src="images/Projekt1Bau2.jpeg" alt="Projekt Bild 3">
                         <!-- Weitere Bilder hinzufügen -->
                     </div>
-                    <button class="prev">&#10094;</button> <!-- Linker Pfeil -->
-                    <button class="next">&#10095;</button> <!-- Rechter Pfeil -->
+                    <button class="prev" style="font-size: 120%;">&#10094;</button> <!-- Linker Pfeil -->
+                    <button class="next" style="font-size: 120%;">&#10095;</button> <!-- Rechter Pfeil -->
                     <div class="projekt-info">
                         <h3>Projekt Titel 1</h3>
                         <p>Kurze Beschreibung der Arbeiten (z.B. Erstellung Kellergeschoss EFH in Stahlbeton).</p>
@@ -145,8 +145,8 @@
                         <img src="images/Projekt2Bau2.jpeg" alt="Projekt Bild 3">
                         <!-- Weitere Bilder hinzufügen -->
                     </div>
-                    <button class="prev">&#10094;</button> <!-- Linker Pfeil -->
-                    <button class="next">&#10095;</button> <!-- Rechter Pfeil -->
+                    <button class="prev" style="font-size: 120%;">&#10094;</button> <!-- Linker Pfeil -->
+                    <button class="next" style="font-size: 120%;">&#10095;</button> <!-- Rechter Pfeil -->
                      <div class="projekt-info">
                         <h3>Projekt Titel 2</h3>
                         <p>Kurze Beschreibung (z.B. Sichtmauerwerk Fassade Bürogebäude).</p>
@@ -154,7 +154,12 @@
                 </div>
                 <!-- Projekt Platzhalter 3 -->
                 <div class="projekt-item" data-aos="fade-up" data-aos-delay="400">
-                     <img src="images/placeholder.png" alt="Projekt Platzhalter 3">
+                     <div class="projekt-gallery">
+                         <img src="images/placeholder.png" alt="Projekt Platzhalter 3" class="active">
+                         <!-- Weitere Bilder können hier hinzugefügt werden -->
+                     </div>
+                     <button class="prev" style="font-size: 120%;">&#10094;</button> <!-- Linker Pfeil -->
+                     <button class="next" style="font-size: 120%;">&#10095;</button> <!-- Rechter Pfeil -->
                      <div class="projekt-info">
                         <h3>Projekt Titel 3</h3>
                         <p>Kurze Beschreibung (z.B. Anbau an Bestandsgebäude, Mauerwerk).</p>
@@ -249,6 +254,10 @@
             const progress = document.getElementById('progress');
             overlay.style.display = 'block';
 
+            // Vergrößere das Overlay um 30%
+            overlay.style.transform = 'scale(1.3)';
+            overlay.style.transition = 'transform 0.3s ease';
+
             // Setze den Fortschrittsbalken zurück und starte die Animation
             progress.style.width = '100%';
             setTimeout(() => {
@@ -261,6 +270,7 @@
             // Blende das Overlay nach 3 Sekunden aus
             setTimeout(() => {
                 overlay.style.display = 'none';
+                overlay.style.transform = 'scale(1)'; // Zurück zur Originalgröße
             }, 5000);
 
             // Lösche den eingetragenen Text aus den Feldern bei Erfolg
@@ -284,16 +294,16 @@
             <p data-aos="fade-up" data-aos-delay="100">Lernen Sie unser engagiertes Team kennen, das hinter unseren Projekten steht.</p>
             <div class="team-grid">
                 <!-- Beispiel für ein Teammitglied -->
-                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
                     <img src="images/mitarbeiter1.jpg" alt="Mitarbeiter 1">
                     <h3>Hugh G. Rection</h3>
                     <p>Projektleiter</p>
                 </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
                     <img src="images/mitarbeiter2.jpg" alt="Mitarbeiter 2">
                     <h3>Anna Ander-Moese </h3>
                     <p>Bauzeichnerin</p>
-                </div> class= "team-mebmber" data-aos= "fade-up" data-aos-delay="400">
+                </div class= "team-mebmber" data-aos= "fade-up" data-aos-delay="300">
                     <img src="images/mitarbeiter3.jpg" alt="Mitarbeiter 3">
                     <h3>Ruben Dias</h3>
                     <p>Bautechniker</p>
